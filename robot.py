@@ -34,8 +34,9 @@ def handel_reply(message):
 
 @robot.text
 def text_reply(message):
-
-    return reply_gpt1(message)
+    user_id = message.source
+    return robot.client.get_user_info(user_id, lang=’zh_CN’)
+#     return reply_gpt1(message)
 
 user_question_answer = {}
 print('client',robot.client)
@@ -111,7 +112,7 @@ def ask_gpt(conversation_list, api_keys):
         conversation_list.append({"role":"assistant","content":answer})
         print(answer)
     except Exception as err:
-        answer = str(err)
+        answer = str(err) 
         print(err)
     return answer
 
