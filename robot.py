@@ -99,11 +99,11 @@ def reply_gpt1(message):
     # ask gpt 1
     conversation_list = []
     conversation_list.append({"role":"user","content":prompt})
-    return ask_gpt(conversation_list, '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')
+    return ask_gpt(conversation_list, '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')
 
 @limit_decor(5,0.1)
 def ask_gpt(conversation_list, api_keys):
-    openai.api_key = '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'
+    openai.api_key = api_keys
     try:
         response = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=conversation_list)
         # response = openai.ChatCompletion.create(model='davinci',messages=conversation_list)
