@@ -97,14 +97,14 @@ def reply_gpt1(message):
         return 'no permission: '+ source
 
     # ask gpt 1
+    conversation_list = []
+    conversation_list.append({"role":"user","content":prompt})
     return ask_gpt(conversation_list, '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')
 
 @limit_decor(5,0.1)
 def ask_gpt(conversation_list, api_keys):
     openai.api_key = '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'
     try:
-        conversation_list = []
-        conversation_list.append({"role":"user","content":prompt})
         response = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=conversation_list)
         # response = openai.ChatCompletion.create(model='davinci',messages=conversation_list)
         answer = response.choices[0].message['content']
