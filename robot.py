@@ -111,7 +111,7 @@ def ask_gpt(conversation_list, api_keys):
         conversation_list.append({"role":"assistant","content":answer})
         print(answer)
     except Exception as err:
-        answer = err
+        answer = str(err)
         print(err)
     return answer
 
