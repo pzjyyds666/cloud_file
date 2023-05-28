@@ -85,9 +85,7 @@ def limit_decor(timeout, granularity):
 
 
 
-@limit_decor(5, 0.1)
 def reply_gpt1(message):
-    openai.api_key = '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'
     prompt = message.content
     print(prompt)
     source = message.source
@@ -99,6 +97,11 @@ def reply_gpt1(message):
         return 'no permission: '+ source
 
     # ask gpt 1
+    return ask_gpt(conversation_list, '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')
+
+@limit_decor(5,0.1)
+def ask_gpt(conversation_list, api_keys):
+    openai.api_key = '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'
     try:
         conversation_list = []
         conversation_list.append({"role":"user","content":prompt})
