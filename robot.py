@@ -35,6 +35,7 @@ def handel_reply(message):
 @robot.text
 def text_reply(message):
     user_id = message.source
+    
     return str(robot.client.get_user_info(user_id))
 #     return reply_gpt1(message)
 
